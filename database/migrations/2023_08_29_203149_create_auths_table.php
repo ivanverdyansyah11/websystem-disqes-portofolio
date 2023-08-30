@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('auths', function (Blueprint $table) {
             $table->id();
+            $table->string('profile')->nullable();
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('role', ['owner', 'staff']);
+            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
     }
